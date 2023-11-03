@@ -21,10 +21,6 @@ export const sequelize: Sequelize = new Sequelize(
   }
 );
 
-// const sequelize = new Sequelize(
-//   'postgres://qgpwtccq:RLHmN6JRg1bsJGJBmHELVPtCtwrN1OhD@trumpet.db.elephantsql.com/qgpwtccq'
-// );
-
 export const User = UserSchema(sequelize);
 export const Company = CompanySchema(sequelize);
 export const Client = ClientSchema(sequelize);
