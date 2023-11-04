@@ -2,29 +2,22 @@ import PdfDocument from 'pdfkit';
 import stream from 'stream';
 import { format } from 'date-fns';
 const formatDate = (date) => {
-    // Parse the input date string manually
-    const datePart = date.toString().split(' (')[0]; // Get the part before the first ' ('
+    const datePart = date.toString().split(' (')[0];
     const inputDate = new Date(datePart);
-    // Format the date as "Month DD, YYYY"
     const formattedDate = format(inputDate, 'MMMM dd, yyyy');
-    // console.log(formattedDate);
     return formattedDate;
 };
 export function generateInvoicePdf(invoice, client, company, invoiceItems) {
-    // formatDate(new Date('2023-10-21 20:02:39.099+03'));
-    // Create a writable stream to capture the PDF data
     const writableStream = new stream.Writable();
     const chunks = [];
-    // Create a PDF document
     const pdf = new PdfDocument();
-    // Pipe the PDF data to the writable stream
     pdf.pipe(writableStream);
-    // Add the content to the PDF document
     pdf.fontSize(50).font('Helvetica-Bold').text('tapforce', 50, 10);
     pdf
         .fontSize(25)
         .font('Helvetica')
         .text('INVOICE', 350, 20, { align: 'right' });
+    //company info
     pdf
         .fontSize(20)
         .font('Helvetica-Bold')
@@ -105,20 +98,16 @@ export function generateInvoicePdf(invoice, client, company, invoiceItems) {
         .fillColor('black')
         .text(`$${finalAmount}`, 450, 370, { align: 'left', width: 200 });
     generateInvoiceTable(pdf, invoiceItems, counts);
-    // End the PDF document
     pdf.end();
     return new Promise((resolve, reject) => {
-        // When all data has been collected, convert it to a base64 string
         writableStream.on('finish', () => {
             const pdfData = Buffer.concat(chunks);
             const base64PDF = pdfData.toString('base64');
             resolve(base64PDF);
         });
-        // Handle any errors during the PDF generation
         writableStream.on('error', (error) => {
             reject(error);
         });
-        // Collect the chunks of data as they become available
         writableStream._write = (chunk, encoding, next) => {
             chunks.push(chunk);
             next();

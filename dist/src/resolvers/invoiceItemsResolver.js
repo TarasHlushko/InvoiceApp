@@ -1,6 +1,6 @@
 import throwCustomError, { ErrorType } from '../util/error-handler.js';
 import { ValidationError } from 'sequelize';
-import { CompanyMember as CompanyMemberDb, Invoice as InvoiceDb, InvoiceItems as InvoiceItemsDb } from '../config/dbConfig.js';
+import { CompanyMember as CompanyMemberDb, Invoice as InvoiceDb, InvoiceItems as InvoiceItemsDb, } from '../config/dbConfig.js';
 export const invoiceItemsResolver = {
     Mutation: {
         async createInvoiceItem(_, args, context) {
@@ -37,7 +37,7 @@ export const invoiceItemsResolver = {
                 const invoice = await InvoiceDb.findOne({
                     where: {
                         id: invoiceItem.invoiceId,
-                    }
+                    },
                 });
                 const companyMember = await CompanyMemberDb.findByPk(context.tokenPayload.id);
                 if (!companyMember || invoice.companyId !== companyMember.companyId) {
@@ -73,7 +73,10 @@ export const invoiceItemsResolver = {
                     id: args.id,
                 },
             });
-            return null;
+            return {
+                status: 'success',
+                data: 'null',
+            };
         },
     },
 };

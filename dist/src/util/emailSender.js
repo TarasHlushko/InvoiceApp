@@ -1,19 +1,17 @@
 import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
-    //   maxConnections: 1, //<-----------ADD THIS LINE
-    //   pool: true, //<-----------ADD THIS LINE
+    //   maxConnections: 1,
+    //   pool: true,
     host: 'smtp.office365.com',
     port: 587,
     auth: {
-        user: 'scsheva@outlook.com',
-        pass: 'Taras225',
+        user: process.env.SENDER_EMAIL,
+        pass: process.env.SENDER_EMAIL_PASSWORD,
     },
 });
-// async..await is not allowed in global scope, must use a wrapper
 export default async function sendEmail(emailReceiver, subject, textBody) {
-    // send mail with defined transport object
     const info = await transporter.sendMail({
-        from: 'scsheva@outlook.com',
+        from: process.env.SENDER_EMAIL,
         to: emailReceiver,
         subject: subject,
         text: textBody, // plain text body

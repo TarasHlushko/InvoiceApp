@@ -10,6 +10,7 @@ import { typeDef as CompanyMemberInvitation } from '../typeDefs/companyMemberInv
 import { typeDef as AuthPayload } from '../typeDefs/authPayload.js';
 import { typeDef as pdfTypeDef } from '../typeDefs/pdfTypeDef.js';
 import { typeDef as ListEntitiesByCompanyInput } from '../typeDefs/listEntitiesByCompanyInput.js';
+import { typeDef as DeleteEntityInput } from '../typeDefs/deleteEntityTypeDef.js';
 import { QueryTypeDef } from '../typeDefs/QueryTypeDef.js';
 import { MutationTypeDef } from '../typeDefs/MutationTypeDef.js';
 import userResolver from '../resolvers/userResolver.js';
@@ -31,6 +32,7 @@ const typeDefs = [
     AuthPayload,
     pdfTypeDef,
     ListEntitiesByCompanyInput,
+    DeleteEntityInput,
 ];
 const resolvers = lodash.merge({}, userResolver, companyResolver, clientResolver, invoiceResolver, invoiceItemsResolver, CompanyMemberInvitationResolver);
 export const schemaConfig = makeExecutableSchema({

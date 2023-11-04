@@ -57,8 +57,12 @@ export default (sequelize: Sequelize) => {
       tableName: 'users',
       paranoid: true,
       underscored: true,
+      indexes: [
+
+      ],
     }
   );
+
   User.beforeSave(async (user, options) => {
     if (user.changed('password')) {
       user.password = await bcrypt.hash(user.password, 10);

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "rootDirs": ["src"],
-    "outDir": "./dist",
+    "outDir": "dist",
+    "rootDir": "./",
     "lib": ["es2020"],
     "target": "es2020",
     "module": "ESNext",
@@ -10,5 +10,5 @@
 
     "types": ["node"]
   },
-  "include": ["./src/**/*", "./tests/**/*"]
+  "include": ["src/"]
 }

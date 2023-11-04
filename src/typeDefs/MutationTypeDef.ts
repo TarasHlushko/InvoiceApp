@@ -14,7 +14,7 @@ type Mutation {
   updateInvoice(id: ID!, updatedInvoiceFields: UpdateInvoiceInput!): Invoice!
   updateInvoiceItem(id: ID!, updatedInvoiceItemFields: UpdateInvoiceItemInput!): InvoiceItem!
   softDeleteInvoiceItem(id: ID!): DeleteEntityTypeDef!
-  softDeleteCompany(): DeleteEntityTypeDef!
+  softDeleteCompany(id: ID!): DeleteEntityTypeDef!
   softDeleteUser(id: ID!): DeleteEntityTypeDef!
   softDeleteInvoice(id: ID!): DeleteEntityTypeDef!
   softDeleteClient(id: ID!): DeleteEntityTypeDef!

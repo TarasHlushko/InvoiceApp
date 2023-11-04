@@ -51,6 +51,7 @@ export default (sequelize) => {
         tableName: 'users',
         paranoid: true,
         underscored: true,
+        indexes: [],
     });
     User.beforeSave(async (user, options) => {
         if (user.changed('password')) {

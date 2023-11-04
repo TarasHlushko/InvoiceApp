@@ -61,7 +61,7 @@ export const companyResolver = {
                 return err;
             }
         },
-        async softDeleteCompany(_, args, context) {
+        async softDeleteCompany(_, _args, context) {
             const companyMember = await CompanyMemberDb.findByPk(context.tokenPayload.id);
             if (!companyMember.companyId) {
                 throwCustomError('Company not found', ErrorType.NOT_FOUND);
@@ -75,7 +75,10 @@ export const companyResolver = {
                     id: companyMember.companyId,
                 },
             });
-            return null;
+            return {
+                status: 'success',
+                data: 'null',
+            };
         },
     },
     Company: {

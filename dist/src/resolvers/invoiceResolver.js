@@ -128,7 +128,10 @@ export const invoiceResolver = {
                     id: args.id,
                 },
             });
-            return null;
+            return {
+                status: 'success',
+                data: 'null',
+            };
         },
         async generatePDFByInvoiceId(_, args, context) {
             const companyMember = await CompanyMemberDb.findByPk(context.tokenPayload.id);

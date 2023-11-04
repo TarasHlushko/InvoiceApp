@@ -13,12 +13,12 @@ type Mutation {
   updateClient(id: ID!, updatedClientFields: UpdateClientInput!): Client!
   updateInvoice(id: ID!, updatedInvoiceFields: UpdateInvoiceInput!): Invoice!
   updateInvoiceItem(id: ID!, updatedInvoiceItemFields: UpdateInvoiceItemInput!): InvoiceItem!
-  softDeleteInvoiceItem(id: ID!): InvoiceItem
-  softDeleteCompany(id: ID!): Company
-  softDeleteUser(id: ID!): User
-  softDeleteInvoice(id: ID!): Invoice
-  softDeleteClient(id: ID!): Client
-  softDeleteInvitationAfterResponse(id: ID!, invitationResponse: Boolean!): CompanyMemberInvitation
+  softDeleteInvoiceItem(id: ID!): DeleteEntityTypeDef!
+  softDeleteCompany(id: ID!): DeleteEntityTypeDef!
+  softDeleteUser(id: ID!): DeleteEntityTypeDef!
+  softDeleteInvoice(id: ID!): DeleteEntityTypeDef!
+  softDeleteClient(id: ID!): DeleteEntityTypeDef!
+  softDeleteInvitationAfterResponse(id: ID!, invitationResponse: Boolean!): DeleteEntityTypeDef!
   generatePDFByInvoiceId(id: ID!): PDF!
 }
 `;

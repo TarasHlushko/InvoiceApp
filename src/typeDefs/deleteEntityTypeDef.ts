@@ -1,6 +1,6 @@
 export const typeDef = `#graphql
 
-input DeleteEntityTypeDef {
+type DeleteEntityTypeDef {
     status: String!
     data: String
 }

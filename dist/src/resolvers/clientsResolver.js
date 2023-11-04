@@ -104,7 +104,10 @@ export const clientResolver = {
                     id: args.id,
                 },
             });
-            return null;
+            return {
+                status: 'success',
+                data: 'null',
+            };
         },
     },
     Client: {

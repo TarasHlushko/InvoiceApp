@@ -67,6 +67,10 @@ export const CompanyMemberInvitationResolver = {
                         id: args.id,
                     },
                 });
+                return {
+                    status: 'success',
+                    data: 'null',
+                };
             }
             catch (err) {
                 if (err instanceof ValidationError) {

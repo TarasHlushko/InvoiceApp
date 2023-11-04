@@ -97,7 +97,7 @@ const userResolver = {
           throwCustomError('Email is already taken', ErrorType.ALREADY_EXISTS);
         }
         return await UserDB.create({
-          email: args.user.email.toLowerCase,
+          email: args.user.email,
           username: args.user.username,
           password: args.user.password,
         });
