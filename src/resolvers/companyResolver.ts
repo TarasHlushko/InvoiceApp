@@ -35,13 +35,11 @@ export const companyResolver = {
           buildingNumber: args.company.buildingNumber,
           region: args.company.region,
         });
-
         await CompanyMemberDb.create({
           userId: context.tokenPayload.id,
           companyId: company.id,
           role: 'Owner',
         });
-
         return company;
       } catch (err) {
         if (err instanceof ValidationError) {

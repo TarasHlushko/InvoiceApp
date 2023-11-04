@@ -93,8 +93,9 @@ export const invoiceResolver = {
         if (!companyMember) {
           throwCustomError('Forbidden request', ErrorType.FORBIDDEN);
         }
-
-        if (companyMember.companyId !== args.invoice.clientId) {
+        const client = await ClientDb.findByPk(args.invoice.clientId);
+        console.log(companyMember.companyId, client.companyId);
+        if (companyMember.companyId !== client.companyId) {
           throwCustomError(
             'Client has different companyId',
             ErrorType.FORBIDDEN
