@@ -25,7 +25,6 @@ export const invoiceItemsResolver = {
         },
         async updateInvoiceItem(_, args, context) {
             try {
-                console.log('2');
                 if (!args) {
                     throwCustomError('Bad user input', ErrorType.BAD_USER_INPUT);
                 }

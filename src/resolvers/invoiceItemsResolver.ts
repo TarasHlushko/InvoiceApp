@@ -46,7 +46,6 @@ export const invoiceItemsResolver = {
       context: IContext
     ) {
       try {
-        console.log('2');
         if (!args) {
           throwCustomError('Bad user input', ErrorType.BAD_USER_INPUT);
         }

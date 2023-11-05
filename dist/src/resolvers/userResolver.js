@@ -162,7 +162,10 @@ const userResolver = {
                         id: userToDelete.id,
                     },
                 });
-                return null;
+                return {
+                    status: 'success',
+                    data: null,
+                };
             }
             //company owner can delete user from companyMember
             const userToDeleteCompanyMember = await CompanyMemberDb.findByPk(userToDelete.id);
